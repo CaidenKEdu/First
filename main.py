@@ -1,3 +1,6 @@
+from time import thread_time
+
+
 def Fact(n):
   if n > 0:
     return n*Fact(n-1)
@@ -11,8 +14,11 @@ def fib_bad(n):
     return 1
 
 def main():
-  for i in range(20):
-    print(f"{i}:\t{fib_bad(i)}")
+  for i in range(10):
+    exe_time = thread_time()
+    val = fib_bad(i)
+    exe_time = thread_time() - exe_time
+    print(f"{i}:\t\t{val}\t\t{exe_time}")
 
 if __name__ == "__main__":
   main()
