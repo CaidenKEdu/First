@@ -20,7 +20,7 @@ def main():
     exe_time = perf_counter()
     val = fib_bad(i)
     exe_time = perf_counter() - exe_time
-    print(f"{i}:\t\t{val}\t\t{exe_time}")
+    print(f"{i},{val},{exe_time}")
 
 
 if __name__ == "__main__":
