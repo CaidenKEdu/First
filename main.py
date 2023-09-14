@@ -1,3 +1,4 @@
+import csv
 from time import perf_counter
 
 
@@ -16,11 +17,13 @@ def fib_bad(n):
 
 
 def main():
-  for i in range(30):
-    exe_time = perf_counter()
-    val = fib_bad(i)
-    exe_time = perf_counter() - exe_time
-    print(f"{i},{val},{exe_time}")
+  with open("fib_bad.csv", 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile)
+    for i in range(30):
+      exe_time = perf_counter()
+      val = fib_bad(i)
+      exe_time = perf_counter() - exe_time
+      csvwriter.writerow([i, val, exe_time])
 
 
 if __name__ == "__main__":
