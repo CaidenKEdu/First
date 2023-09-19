@@ -19,11 +19,14 @@ def fib_bad(n):
 def main():
   with open("fib_bad.csv", 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
-    for i in range(30):
+    for i in range(35):
       exe_time = perf_counter()
       val = fib_bad(i)
       exe_time = perf_counter() - exe_time
-      csvwriter.writerow([i, val, exe_time])
+      exe_time2 = perf_counter()
+      val2 = Fact(i)
+      exe_time2 = perf_counter() - exe_time2
+      csvwriter.writerow([i, val, exe_time, val2, exe_time2])
 
 
 if __name__ == "__main__":
