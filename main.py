@@ -38,37 +38,59 @@ def main():
     data_fact = []
     data_sort = []
     data_num = []
-    for x in range(40):
+    for x in range(25):
         data_num.append(x)
-    for i in range(40):
-        list = []
-        for x in range(i):
-            list.append(x)
-        shuffle(list)
-        exe_time = perf_counter()
-        val = fact(i)
-        exe_time = perf_counter() - exe_time
-        data_fact.append(exe_time)
-        exe_time2 = perf_counter()
-        val2 = fib_bad(i)
-        exe_time2 = perf_counter() - exe_time2
-        data_fib_bad.append(exe_time2)
-        exe_time3 = perf_counter()
-        val3 = fib_good(i)
-        exe_time3 = perf_counter() - exe_time3
-        data_fib_good.append(exe_time3)
-        exe_time4 = perf_counter()
-        list.sort()
-        exe_time4 = perf_counter() - exe_time4
-        data_sort.append(exe_time4)
-        print(i)
+    for x in range(1500):
+        for i in range(25):
+            if x == 0:
+                list = []
+                for z in range(i):
+                    list.append(z)
+                shuffle(list)
+                exe_time = perf_counter()
+                val = fact(i)
+                exe_time = perf_counter() - exe_time
+                data_fact.append(exe_time)
+                exe_time2 = perf_counter()
+                val2 = fib_bad(i)
+                exe_time2 = perf_counter() - exe_time2
+                data_fib_bad.append(exe_time2)
+                exe_time3 = perf_counter()
+                val3 = fib_good(i)
+                exe_time3 = perf_counter() - exe_time3
+                data_fib_good.append(exe_time3)
+                exe_time4 = perf_counter()
+                list.sort()
+                exe_time4 = perf_counter() - exe_time4
+                data_sort.append(exe_time4)
+            else:
+                list = []
+                for z in range(i):
+                    list.append(z)
+                shuffle(list)
+                exe_time = perf_counter()
+                val = fact(i)
+                exe_time = perf_counter() - exe_time
+                data_fact[i] = (exe_time + data_fact[i])/(x+1)
+                exe_time2 = perf_counter()
+                val2 = fib_bad(i)
+                exe_time2 = perf_counter() - exe_time2
+                data_fib_bad[i] = (exe_time2 + data_fib_bad[i])/(x+1)
+                exe_time3 = perf_counter()
+                val3 = fib_good(i)
+                exe_time3 = perf_counter() - exe_time3
+                data_fib_good[i] = (exe_time3 + data_fib_good[i])/(x+1)
+                exe_time4 = perf_counter()
+                list.sort()
+                exe_time4 = perf_counter() - exe_time4
+                data_sort[i] = (exe_time4 + data_sort[i])/(x+1)
     fig, ax = plt.subplots()
     ax.plot(data_num, data_fib_good, label="Fib_Good")
     ax.plot(data_num, data_fib_bad, label="Fib_Bad")
     ax.plot(data_num, data_fact, label="Fact")
     ax.plot(data_num, data_sort, label="Sort")
     ax.legend()
-    plt.ylim(0, 0.00001)
+    plt.ylim(0, 0.000000001)
     plt.show()
 
     '''''
