@@ -68,6 +68,7 @@ def main():
     ax.plot(data_num, data_fact, label="Fact")
     ax.plot(data_num, data_sort, label="Sort")
     ax.legend()
+    plt.ylim(0, 0.00001)
     plt.show()
 
     '''''
