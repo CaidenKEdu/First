@@ -36,6 +36,7 @@ def main():
     data_fib_good = []
     data_fib_bad = []
     data_fact = []
+    data_sort = []
     data_num = []
     for x in range(35):
         data_num.append(x)
@@ -56,11 +57,16 @@ def main():
         val3 = fib_good(i)
         exe_time3 = perf_counter() - exe_time3
         data_fib_good.append(exe_time3)
+        exe_time4 = perf_counter()
+        list.sort()
+        exe_time4 = perf_counter() - exe_time4
+        data_sort.append(exe_time4)
         print(i)
     fig, ax = plt.subplots()
     ax.plot(data_num, data_fib_good, label="Fib_Good")
     ax.plot(data_num, data_fib_bad, label="Fib_Bad")
     ax.plot(data_num, data_fact, label="Fact")
+    ax.plot(data_num, data_sort, label="Sort")
     ax.legend()
     plt.show()
 
