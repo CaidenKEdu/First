@@ -38,9 +38,9 @@ def main():
     data_fact = []
     data_sort = []
     data_num = []
-    for x in range(35):
+    for x in range(40):
         data_num.append(x)
-    for i in range(35):
+    for i in range(40):
         list = []
         for x in range(i):
             list.append(x)
