@@ -34,17 +34,34 @@ def fib_good(n):
 
 def main():
     data_fib_good = []
+    data_fib_bad = []
+    data_fact = []
     data_num = []
-    for x in range(20000):
+    for x in range(35):
         data_num.append(x)
-    for i in range(20000):
+    for i in range(35):
+        list = []
+        for x in range(i):
+            list.append(x)
+        shuffle(list)
+        exe_time = perf_counter()
+        val = fact(i)
+        exe_time = perf_counter() - exe_time
+        data_fact.append(exe_time)
+        exe_time2 = perf_counter()
+        val2 = fib_bad(i)
+        exe_time2 = perf_counter() - exe_time2
+        data_fib_bad.append(exe_time2)
         exe_time3 = perf_counter()
         val3 = fib_good(i)
         exe_time3 = perf_counter() - exe_time3
         data_fib_good.append(exe_time3)
         print(i)
     fig, ax = plt.subplots()
-    ax.plot(data_num, data_fib_good)
+    ax.plot(data_num, data_fib_good, label="Fib_Good")
+    ax.plot(data_num, data_fib_bad, label="Fib_Bad")
+    ax.plot(data_num, data_fact, label="Fact")
+    ax.legend()
     plt.show()
 
     '''''
