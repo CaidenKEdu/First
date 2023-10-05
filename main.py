@@ -99,7 +99,6 @@ def main():
     ax.legend()
     plt.ylim(0, 0.000001)
     plt.show()
-    plt.savefig("Plot.PDF", format="pdf", bbox_inches="tight")
 
     '''''
     with open("data.csv", 'w', newline='') as csvfile:
