@@ -1,4 +1,9 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+import matplotlib as mpl
 import csv
+from random import shuffle
 from time import perf_counter
 
 
@@ -28,9 +33,28 @@ def fib_good(n):
 
 
 def main():
+    data_fib_good = []
+    data_num = []
+    for x in range(20000):
+        data_num.append(x)
+    for i in range(20000):
+        exe_time3 = perf_counter()
+        val3 = fib_good(i)
+        exe_time3 = perf_counter() - exe_time3
+        data_fib_good.append(exe_time3)
+        print(i)
+    fig, ax = plt.subplots()
+    ax.plot(data_num, data_fib_good)
+    plt.show()
+
+    '''''
     with open("data.csv", 'w', newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
         for i in range(35):
+            list = []
+            for x in range(i):
+                list.append(x)
+            shuffle(list)
             exe_time = perf_counter()
             val = fact(i)
             exe_time = perf_counter() - exe_time
@@ -40,7 +64,11 @@ def main():
             exe_time3 = perf_counter()
             val3 = fib_good(i)
             exe_time3 = perf_counter() - exe_time3
-            csvwriter.writerow([i, val, exe_time, val2, exe_time2, val3, exe_time3])
+            exe_time4 = perf_counter()
+            list.sort()
+            exe_time4 = perf_counter() - exe_time4
+            csvwriter.writerow([i, exe_time, exe_time2, exe_time3, exe_time4])
+'''''
 
 if __name__ == "__main__":
     main()
